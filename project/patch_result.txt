@@ -1,0 +1,10 @@
+﻿python :   File "C:\Users\mohsin\Desktop\project\patch_map.py", line 22
+At line:1 char:1
++ python patch_map.py 2>&1 | Out-File -Encoding utf8 patch_result.txt;  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (  File "C:\User...ap.py", line 22:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    map_moussem = """    map: {
+                  ^^^^^^^^^^^^^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 123-124: truncated \uXXXX escape

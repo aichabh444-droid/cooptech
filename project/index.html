@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experience Bladi - منصة التجارب الثقافية الغامرة في المغرب. اكتشف التراث المغربي الأصيل من خلال باقات فريدة تجمع بين التعلم والمتعة والمغامرة.">
+  <meta name="keywords" content="تجربة بلادي, Experience Bladi, سياحة ثقافية, المغرب, تراث مغربي, مديونة, تعاونيات">
+  <title>Experience Bladi | تجربة بلادي - اكتشف تراثنا</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": "Experience Bladi",
+    "description": "منصة التجارب الثقافية الغامرة في المغرب",
+    "url": "https://experience-bladi.ma",
+    "touristType": ["Cultural Tourism", "Heritage Tourism", "Educational Tourism"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ════════════ LOADING SCREEN ════════════ -->
+  <div class="loader" id="loader">
+    <div class="loader-icon"><img src="images/logo.PNG" alt="Experience Bladi"></div>
+    <div class="loader-text">...تجربة بلادي</div>
+  </div>
+
+  <!-- ════════════ NAVIGATION ════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="navbar-logo">
+        <div class="logo-icon"><img src="images/logo.PNG" alt="Logo"></div>
+        <span class="logo-text">Experience Bladi</span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="#home" class="active" data-i18n="nav.home">الرئيسية</a>
+        <a href="#about" data-i18n="nav.about">من نحن</a>
+        <a href="#packs" data-i18n="nav.packs">الباقات</a>
+        <a href="#store" data-i18n="nav.store">المتجر</a>
+        <a href="#journey" data-i18n="nav.journey">الرحلة</a>
+        <a href="#testimonials" data-i18n="nav.testimonials">آراء الزبناء</a>
+        <a href="#booking" class="navbar-cta" data-i18n="nav.book">احجز تجربتك</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn active" data-lang="ar" onclick="setLanguage('ar')">AR</button>
+        <button class="lang-btn" data-lang="fr" onclick="setLanguage('fr')">FR</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════ HERO SECTION ════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-background">
+      <img src="images/site.png" class="hero-bg-blur" alt="" aria-hidden="true">
+      <img src="images/site.png" class="hero-bg-main" alt="المناظر الطبيعية المغربية" loading="eager">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-pattern"></div>
+
+    <div class="hero-content">
+
+      <h1 class="hero-title" data-i18n="hero.title">
+        أي واحد يقدر يدير رحلات<br>
+        ولكن ماشي أي واحد يقدر يخلق<br>
+        <span class="highlight">تجربة لا تُنسى</span>
+      </h1>
+      <p class="hero-description" data-i18n="hero.desc">
+        نحن لا نقدم مجرد نزهة، بل تجارب ثقافية غامرة تعيدك إلى الزمن الجميل.
+        عِش يوماً كاملاً كأنك من أهل المنطقة.
+      </p>
+      <div class="hero-actions">
+        <a href="#packs" class="btn-primary">
+          <span data-i18n="hero.btn_packs">🎒 اكتشف الباقات</span>
+        </a>
+        <a href="#journey" class="btn-secondary">
+          <span data-i18n="hero.btn_journey">▶ شاهد الرحلة</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span data-i18n="hero.scroll">اكتشف المزيد</span>
+      <div class="scroll-line"></div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="container">
+        <div class="stat-item">
+          <div class="stat-number" data-count="500">0</div>
+          <div class="stat-label" data-i18n="stats.success">تجربة ناجحة</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="12">0</div>
+          <div class="stat-label" data-i18n="stats.regions">منطقة مغربية</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="98">0</div>
+          <div class="stat-label" data-i18n="stats.satisfaction">% رضا الزبناء</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="25">0</div>
+          <div class="stat-label" data-i18n="stats.hosts">مضيف محلي</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ ABOUT SECTION ════════════ -->
+  <section class="about section-padding" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-slideshow" id="aboutSlideshow">
+              <img src="images/zerbia.jpg" alt="زربية تقليدية مغربية" class="about-slide active" loading="lazy">
+              <img src="images/hourse.jpg" alt="خيل مغربي" class="about-slide" style="object-position: top center;" loading="lazy">
+              <img src="images/mountajat.jpg" alt="منتجات تقليدية" class="about-slide" loading="lazy">
+              <button class="slide-arrow slide-prev" id="slidePrev" aria-label="السابق">&#8249;</button>
+              <button class="slide-arrow slide-next" id="slideNext" aria-label="التالي">&#8250;</button>
+              <div class="slideshow-dots">
+                <span class="sdot active" data-i="0"></span>
+                <span class="sdot" data-i="1"></span>
+                <span class="sdot" data-i="2"></span>
+              </div>
+            </div>
+          <div class="floating-card">
+            <div class="icon-circle">🌿</div>
+            <div class="card-text">
+              <h4 data-i18n="about.card_title">تجربة أصيلة</h4>
+              <p data-i18n="about.card_desc">100% تراث محلي حقيقي</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content reveal reveal-delay-2">
+          <div class="about-tag" data-i18n="about.tag">✦ لماذا نحن مختلفون؟</div>
+          <h2 data-i18n="about.title">نحن لسنا مجرد منصة حجوزات<br>بل <span style="color: var(--color-terracotta);">بوابة للزمن الجميل</span></h2>
+          <p data-i18n="about.p1">
+            في عالم يسيطر عليه الذكاء الاصطناعي والتكنولوجيا، نقدم لك فرصة فريدة 
+            للعودة إلى جذورك. نربط الأجيال الصاعدة بثقافة الأجداد من خلال تجارب حية 
+            ولحظات لا تُنسى مصممة بعناية لتكون "Instagramable".
+          </p>
+          <p data-i18n="about.p2">
+            العميل هو بطل الرحلة – وكل تفصيلة مبنية على الجمالية والأصالة والتعلم التفاعلي.
+          </p>
+
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="f-icon">🎭</div>
+              <div>
+                <h4 data-i18n="feat1.title">تجربة غامرة</h4>
+                <p data-i18n="feat1.desc">عِش يوماً كأهل المنطقة</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="f-icon">📸</div>
+              <div>
+                <h4 data-i18n="feat2.title">لحظات مميزة</h4>
+                <p data-i18n="feat2.desc">صور وذكريات لا تُنسى</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="f-icon">📜</div>
+              <div>
+                <h4 data-i18n="feat3.title">شهادة تذكارية</h4>
+                <p data-i18n="feat3.desc">تذكار + شهادة بالتجربة</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="f-icon">🎓</div>
+              <div>
+                <h4 data-i18n="feat4.title">تعلم تفاعلي</h4>
+                <p data-i18n="feat4.desc">تعرف على ثقافات حقيقية</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ PACKS SECTION ════════════ -->
+  <section class="packs section-padding" id="packs">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge" data-i18n="packs.badge">🎒 باقاتنا الحصرية</div>
+        <h2 class="section-title" data-i18n="packs.title">اختر تجربتك المفضلة</h2>
+        <p class="section-subtitle" data-i18n="packs.subtitle">
+          كل باقة مصممة بعناية لتمنحك تجربة ثقافية فريدة تجمع بين المتعة والتعلم والمغامرة
+        </p>
+      </div>
+
+      <div class="packs-slider-container reveal">
+        <button class="slide-arrow slide-prev prev-pack" id="prevPack" aria-label="السابق">→</button>
+        <div class="packs-track-wrapper">
+          <div class="packs-track" id="packsTrack">
+            <!-- Pack 1: Moussem -->
+            <article class="pack-card" data-pack="moussem">
+              <img class="pack-image" src="images/pack-moussem.png" alt="باك الموسم - تجربة الموسم المحلي" loading="lazy">
+              <div class="pack-overlay"></div>
+              <div class="pack-content">
+                <div class="pack-tags">
+                  <span class="tag" data-i18n="pack.moussem.tag1">🎪 ثقافي</span>
+                  <span class="tag" data-i18n="pack.moussem.tag2">👨‍👩‍👧‍👦 عائلي</span>
+                  <span class="tag" data-i18n="pack.moussem.tag3">🔥 الأكثر طلباً</span>
+                </div>
+                <h3 data-i18n="pack.moussem.name">باك الموسم</h3>
+                <p class="pack-desc" data-i18n="pack.moussem.desc">تجربة فريدة لحضور موسم محلي أصيل مع ترحيب خاص واستكشاف التقاليد والفلكلور المحلي في أجواء احتفالية لا مثيل لها.</p>
+                <div class="pack-price">
+                  <div class="price">350 <span data-i18n="curr">درهم</span> <small>/ <span data-i18n="per.person">للشخص</span></small></div>
+                  <button class="pack-btn" onclick="selectPack('moussem')" data-i18n="book.now">احجز الآن ←</button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Pack 2: Mediouni -->
+            <article class="pack-card" data-pack="mediouni">
+              <img class="pack-image" src="images/pack-mediouni.png" alt="باك مديوني - تجربة الفلاحة" loading="lazy">
+              <div class="pack-overlay"></div>
+              <div class="pack-content">
+                <div class="pack-tags">
+                  <span class="tag" data-i18n="pack.mediouni.tag1">🌾 فلاحة</span>
+                  <span class="tag" data-i18n="pack.mediouni.tag2">🧵 حرف يدوية</span>
+                </div>
+                <h3 data-i18n="pack.mediouni.name">باك مديوني</h3>
+                <p class="pack-desc" data-i18n="pack.mediouni.desc">اكتشف حياة الفلاحة ونسيج الصوف وتسوق في السوق المحلي واصنع منتجك بيديك.</p>
+                <div class="pack-price">
+                  <div class="price">280 <span data-i18n="curr">درهم</span> <small>/ <span data-i18n="per.person">للشخص</span></small></div>
+                  <button class="pack-btn" onclick="selectPack('mediouni')" data-i18n="book.now">احجز الآن ←</button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Pack 3: Cooperatives -->
+            <article class="pack-card" data-pack="cooperative">
+              <img class="pack-image" src="images/pack-cooperative.png" alt="باك التعاونيات - تجربة الحرف" loading="lazy">
+              <div class="pack-overlay"></div>
+              <div class="pack-content">
+                <div class="pack-tags">
+                  <span class="tag" data-i18n="pack.coop.tag1">🧶 تعاونيات</span>
+                  <span class="tag">✂️ DIY</span>
+                </div>
+                <h3 data-i18n="pack.coop.name">باك التعاونيات</h3>
+                <p class="pack-desc" data-i18n="pack.coop.desc">صنع منتج يدوي من الألف إلى الياء: حياكة، خياطة، تطريز مع حرفيات محترفات.</p>
+                <div class="pack-price">
+                  <div class="price">320 <span data-i18n="curr">درهم</span> <small>/ <span data-i18n="per.person">للشخص</span></small></div>
+                  <button class="pack-btn" onclick="selectPack('cooperative')" data-i18n="book.now">احجز الآن ←</button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Pack 4: Wladi -->
+            <article class="pack-card" data-pack="wladi">
+              <img class="pack-image" src="images/pack-wladi.png" alt="باك ولادي - تجربة الأطفال" loading="lazy">
+              <div class="pack-overlay"></div>
+              <div class="pack-content">
+                <div class="pack-tags">
+                  <span class="tag" data-i18n="pack.wladi.tag1">👶 أطفال</span>
+                  <span class="tag" data-i18n="pack.wladi.tag2">🎨 تعليمي</span>
+                </div>
+                <h3 data-i18n="pack.wladi.name">باك ولادي</h3>
+                <p class="pack-desc" data-i18n="pack.wladi.desc">باقات مخصصة للأطفال تربطهم بزمن الأجداد بطريقة مبسطة ومرحة وتعليمية.</p>
+                <div class="pack-price">
+                  <div class="price">200 <span data-i18n="curr">درهم</span> <small>/ <span data-i18n="per.child">للطفل</span></small></div>
+                  <button class="pack-btn" onclick="selectPack('wladi')" data-i18n="book.now">احجز الآن ←</button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Pack 5: Wedding -->
+            <article class="pack-card" data-pack="weding">
+              <img class="pack-image" src="images/weding.jpg" alt="باك عرسي - حفل نسائي" loading="lazy" style="object-position: top center;">
+              <div class="pack-overlay"></div>
+              <div class="pack-content">
+                <div class="pack-tags">
+                  <span class="tag" data-i18n="pack.weding.tag1">🎊 حفل نسائي</span>
+                  <span class="tag" data-i18n="pack.weding.tag2">💍 عرس مغربي أصيل</span>
+                </div>
+                <h3 data-i18n="pack.weding.name">باك عرسي</h3>
+                <p class="pack-desc" data-i18n="pack.weding.desc">باك عرسي (بلا عريس)، حفل مخصص للنساء يضم كل طقوس العرس المغربي: العونيات، الأكل التقليدي، نقش الحناء، العمارية وبرزة العروسة، بالإضافة للتصوير الاحترافي.</p>
+                <div class="pack-price">
+                  <div class="price">1500 <span data-i18n="curr">درهم</span> <small>/ <span data-i18n="per.person">للفرد</span></small></div>
+                  <button class="pack-btn" onclick="selectPack('weding')" data-i18n="book.now">احجز الآن ←</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <button class="slide-arrow slide-next next-pack" id="nextPack" aria-label="التالي">←</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ STORE SECTION ════════════ -->
+  <section class="store-section section-padding" id="store">
+    <div class="container">
+      <div class="store-controls reveal">
+        <button class="filter-toggle-btn" id="filterToggle">
+          <span data-i18n="store.filter.toggle">تخصيص البحث والتصفيات</span>
+          <i class="arrow-icon">▼</i>
+        </button>
+      </div>
+
+      <div class="store-layout reveal">
+        <!-- Sidebar Filters (Modified to be toggleable) -->
+        <aside class="store-sidebar" id="storeSidebar">
+          <h3 data-i18n="store.filter.title">تصفية المنتجات</h3>
+          
+          <div class="filter-group">
+            <h4 data-i18n="store.filter.cats">الفئات</h4>
+            <div class="filter-options">
+              <label class="custom-checkbox">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span data-i18n="store.filter.all">جميع المنتجات (30)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span data-i18n="store.filter.bags">حقائب يدوية (sac) (12)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span data-i18n="store.filter.beauty">منتجات التجميل (8)</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span data-i18n="store.filter.spices">حبوب وتوابل (10)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4 data-i18n="store.filter.price">نطاق السعر (درهم)</h4>
+            <div class="price-range">
+              <input type="range" min="50" max="2500" value="2500" class="price-slider">
+              <div class="price-labels">
+                <span>50</span>
+                <span>2500</span>
+              </div>
+            </div>
+          </div>
+          
+          <button class="btn-primary w-100" data-i18n="store.filter.apply">تطبيق التصفية</button>
+        </aside>
+
+        <!-- Main Store Area -->
+        <div class="store-main">
+          <!-- Toolbar -->
+          <div class="store-toolbar">
+            <div class="results-info">
+              <span class="results-count" data-i18n="store.toolbar.results">عرض 1-9 من أصل 30 منتج</span>
+            </div>
+            <div class="sort-by">
+              <label data-i18n="store.toolbar.sort">ترتيب حسب:</label>
+              <select class="custom-select">
+                <option data-i18n="store.sort.best">الأكثر مبيعاً</option>
+                <option data-i18n="store.sort.new">المضاف حديثاً</option>
+                <option data-i18n="store.sort.low">السعر: من الأقل</option>
+                <option data-i18n="store.sort.high">السعر: من الأعلى</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="store-grid" style="display: block; text-align: center; padding: 3rem;">
+            <div class="empty-state">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🛒</div>
+              <h3 data-i18n="store.empty.title">المتجر فارغ حالياً</h3>
+              <p style="color: var(--color-brown-light);" data-i18n="store.empty.desc">قريباً سيتم إضافة منتجات الصناعة التقليدية الأصيلة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ EXPERIENCE TIMELINE ════════════ -->
+  <section class="timeline-section section-padding" id="journey">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge" data-i18n="journey.badge">🗺️ رحلة التجربة</div>
+        <h2 class="section-title" data-i18n="journey.title">كيف تعيش التجربة معنا؟</h2>
+        <p class="section-subtitle" data-i18n="journey.subtitle">
+          من لحظة الحجز إلى العودة بذكريات لا تُنسى – كل خطوة مصممة بعناية
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="step-num">01</div>
+            <h3 data-i18n="step1.title">اختر باقتك المفضلة</h3>
+            <p data-i18n="step1.desc">تصفح باقاتنا الأربع واختر ما يناسبك. خصص تجربتك بإضافة الأنشطة التي تثير فضولك.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="step-num">02</div>
+            <h3 data-i18n="step2.title">الترحيب والاستقبال</h3>
+            <p data-i18n="step2.desc">نستقبلك مع أهل المنطقة بأصالة مغربية. شاي بالنعناع، ابتسامة صادقة، والهدوء الريفي.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="step-num">03</div>
+            <h3 data-i18n="step3.title">عِش التجربة الغامرة</h3>
+            <p data-i18n="step3.desc">ارتدِ اللباس التقليدي، اعمل في الفلاحة، اصنع الزربية بيديك. كُن جزءاً من المنطقة ليوم كامل.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="step-num">04</div>
+            <h3 data-i18n="step4.title">التذكار والشهادة</h3>
+            <p data-i18n="step4.desc">عُد بتذكار يدوي أصيل وشهادة "Experience Bladi" الحصرية. وذكريات تدوم للأبد.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ TESTIMONIALS ════════════ -->
+  <section class="testimonials section-padding" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge" data-i18n="review.badge">💬 تقييم التجربة</div>
+        <h2 class="section-title" data-i18n="review.title">شاركنا رأيك</h2>
+        <p class="section-subtitle" data-i18n="review.subtitle">
+          رأيك يهمنا لتحسين خدماتنا وتطوير التجربة
+        </p>
+      </div>
+
+      <div class="review-form-container reveal">
+        <form class="review-form" id="reviewForm" onsubmit="event.preventDefault(); alert('شكراً لتقييمك!'); this.reset();">
+          <div class="form-group">
+            <label for="reviewName" data-i18n="review.name">الاسم</label>
+            <input type="text" id="reviewName" data-i18n-placeholder="review.name.ph" placeholder="أدخل اسمك" required>
+          </div>
+          <div class="form-group">
+            <label for="reviewPack" data-i18n="review.pack">الباقة المجربة</label>
+            <select id="reviewPack" required>
+              <option value="" data-i18n="review.pack.ph">اختر الباقة</option>
+              <option value="moussem" data-i18n="pack.moussem.name">باك الموسم</option>
+              <option value="mediouni" data-i18n="pack.mediouni.name">باك مديوني</option>
+              <option value="cooperative" data-i18n="pack.coop.name">باك التعاونيات</option>
+              <option value="wladi" data-i18n="pack.wladi.name">باك ولادي</option>
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label data-i18n="review.rating">التقييم</label>
+            <div class="rating-stars">
+              <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+              <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+              <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+              <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+              <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+            </div>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label for="reviewText" data-i18n="review.text">تعليقك</label>
+            <textarea id="reviewText" rows="4" data-i18n-placeholder="review.text.ph" placeholder="شاركنا رأيك وتجربتك..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="grid-column: 1 / -1; justify-self: center;">
+            <span data-i18n="review.submit">إرسال التقييم</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ BOOKING WIZARD ════════════ -->
+  <section class="booking-section section-padding" id="booking">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge" data-i18n="book.badge">📝 احجز تجربتك</div>
+        <h2 class="section-title" data-i18n="book.title">ابدأ مغامرتك الآن</h2>
+        <p class="section-subtitle" data-i18n="book.subtitle">اختر باقتك، خصص برنامجك، واحجز مكانك في 3 خطوات بسيطة</p>
+      </div>
+
+      <div class="booking-wizard reveal">
+        <!-- Progress Steps -->
+        <div class="wizard-progress">
+          <div class="progress-step active" data-step="1">
+            <div class="step-circle">1</div>
+            <span class="step-label" data-i18n="wiz.step1">اختر الباقة</span>
+          </div>
+          <div class="progress-step" data-step="2">
+            <div class="step-circle">2</div>
+            <span class="step-label" data-i18n="wiz.step2">معلوماتك</span>
+          </div>
+          <div class="progress-step" data-step="3">
+            <div class="step-circle">3</div>
+            <span class="step-label" data-i18n="wiz.step3">الملخص</span>
+          </div>
+        </div>
+
+        <!-- Wizard Body -->
+        <div class="wizard-body">
+          <!-- STEP 1: Choose Pack + Details -->
+          <div class="wizard-step active" id="wizardStep1">
+            <h3 data-i18n="wiz.s1.title">اختر باقتك المفضلة</h3>
+            <p class="step-description" data-i18n="wiz.s1.desc">اضغط على الباقة لمعرفة تفاصيلها الكاملة</p>
+            <div class="pack-selection">
+              <label class="pack-option">
+                <input type="radio" name="pack" value="moussem" data-price="350" data-name="باك الموسم">
+                <div class="option-card">
+                  <div class="option-emoji">🎪</div>
+                  <div class="option-info">
+                    <h4 data-i18n="pack.moussem.name">باك الموسم</h4>
+                    <p>350 <span data-i18n="curr">درهم</span> / <span data-i18n="per.person">للشخص</span></p>
+                  </div>
+                </div>
+              </label>
+              <label class="pack-option">
+                <input type="radio" name="pack" value="mediouni" data-price="280" data-name="باك مديوني">
+                <div class="option-card">
+                  <div class="option-emoji">🌾</div>
+                  <div class="option-info">
+                    <h4 data-i18n="pack.mediouni.name">باك مديوني</h4>
+                    <p>280 <span data-i18n="curr">درهم</span> / <span data-i18n="per.person">للشخص</span></p>
+                  </div>
+                </div>
+              </label>
+              <label class="pack-option">
+                <input type="radio" name="pack" value="cooperative" data-price="320" data-name="باك التعاونيات">
+                <div class="option-card">
+                  <div class="option-emoji">🧶</div>
+                  <div class="option-info">
+                    <h4 data-i18n="pack.coop.name">باك التعاونيات</h4>
+                    <p>320 <span data-i18n="curr">درهم</span> / <span data-i18n="per.person">للشخص</span></p>
+                  </div>
+                </div>
+              </label>
+              <label class="pack-option">
+                <input type="radio" name="pack" value="wladi" data-price="200" data-name="باك ولادي">
+                <div class="option-card">
+                  <div class="option-emoji">👶</div>
+                  <div class="option-info">
+                    <h4 data-i18n="pack.wladi.name">باك ولادي</h4>
+                    <p>200 <span data-i18n="curr">درهم</span> / <span data-i18n="per.child">للطفل</span></p>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Pack Detail Panel (shown when a pack is selected) -->
+            <div class="pack-detail-panel" id="packDetailPanel">
+              <!-- Content injected by JS -->
+            </div>
+          </div>
+
+          <!-- STEP 2: Personal Info -->
+          <div class="wizard-step" id="wizardStep2">
+            <h3 data-i18n="wiz.s2.title">معلوماتك الشخصية</h3>
+            <p class="step-description" data-i18n="wiz.s2.desc">أدخل بياناتك لإتمام الحجز</p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fullName" data-i18n="form.name">الاسم الكامل</label>
+                <input type="text" id="fullName" data-i18n-placeholder="form.name.ph" placeholder="أدخل اسمك الكامل" required>
+              </div>
+              <div class="form-group">
+                <label for="phone" data-i18n="form.phone">رقم الهاتف</label>
+                <input type="tel" id="phone" placeholder="06XXXXXXXX" required>
+              </div>
+              <div class="form-group">
+                <label for="guests" data-i18n="form.guests">عدد الأشخاص</label>
+                <input type="number" id="guests" value="1" min="1" max="20">
+              </div>
+              <div class="form-group">
+                <label for="city" data-i18n="form.city">المدينة</label>
+                <select id="city">
+                  <option value="" data-i18n="form.city.ph">اختر مدينتك</option>
+                  <option value="casablanca" data-i18n="city.casa">الدار البيضاء</option>
+                  <option value="rabat" data-i18n="city.rabat">الرباط</option>
+                  <option value="marrakech" data-i18n="city.marrakech">مراكش</option>
+                  <option value="fes" data-i18n="city.fes">فاس</option>
+                  <option value="tangier" data-i18n="city.tangier">طنجة</option>
+                  <option value="other" data-i18n="city.other">أخرى</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: var(--space-md);">
+              <label for="notes" data-i18n="form.notes">ملاحظات إضافية (اختياري)</label>
+              <textarea id="notes" rows="3" data-i18n-placeholder="form.notes.ph" placeholder="أي تفاصيل أو طلبات خاصة..."></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 3: Summary -->
+          <div class="wizard-step" id="wizardStep3">
+            <h3 data-i18n="wiz.s3.title">ملخص الحجز</h3>
+            <p class="step-description" data-i18n="wiz.s3.desc">راجع طلبك قبل التأكيد</p>
+            <div class="summary-card">
+              <div class="summary-row">
+                <span class="label" data-i18n="sum.pack">الباقة المختارة</span>
+                <span class="value" id="summaryPack">—</span>
+              </div>
+              <div class="summary-row">
+                <span class="label" data-i18n="sum.activities">الأنشطة المتضمنة</span>
+                <span class="value" id="summaryActivities">—</span>
+              </div>
+              <div class="summary-row">
+                <span class="label" data-i18n="sum.name">الاسم</span>
+                <span class="value" id="summaryName">—</span>
+              </div>
+              <div class="summary-row">
+                <span class="label" data-i18n="sum.guests">عدد الأشخاص</span>
+                <span class="value" id="summaryGuests">1</span>
+              </div>
+            </div>
+            <div class="summary-total">
+              <span class="total-label" data-i18n="sum.total">المجموع الكلي</span>
+              <span class="total-price" id="summaryTotal">0 MAD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wizard Footer -->
+        <div class="wizard-footer">
+          <button class="btn-back" id="wizardBack" style="visibility: hidden;" data-i18n="wiz.back">→ الرجوع</button>
+          <button class="btn-next" id="wizardNext">
+            <span data-i18n="wiz.next">التالي ←</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon"><img src="images/logo.PNG" alt="Logo"></div>
+            <h3>Experience Bladi</h3>
+          </div>
+          <p data-i18n="footer.brand.desc">
+            منصة التجارب الثقافية الغامرة في المغرب. نربط بين التراث والحداثة
+            لنقدم لك لحظات لا تُنسى مع أهل المنطقة.
+          </p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="YouTube">🎬</a>
+            <a href="#" aria-label="TikTok">🎵</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.packs">الباقات</h4>
+          <ul>
+            <li><a href="#packs" data-i18n="pack.moussem.name">باك الموسم</a></li>
+            <li><a href="#packs" data-i18n="pack.mediouni.name">باك مديوني</a></li>
+            <li><a href="#packs" data-i18n="pack.coop.name">باك التعاونيات</a></li>
+            <li><a href="#packs" data-i18n="pack.wladi.name">باك ولادي</a></li>
+            <li><a href="#packs" data-i18n="pack.weding.name">باك عرسي</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.links">روابط مفيدة</h4>
+          <ul>
+            <li><a href="#about" data-i18n="nav.about">من نحن</a></li>
+            <li><a href="#journey" data-i18n="footer.how">كيف تعمل</a></li>
+            <li><a href="#testimonials" data-i18n="nav.testimonials">آراء الزبناء</a></li>
+            <li><a href="host.html" data-i18n="footer.host">لوحة المضيف</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.contact">تواصل معنا</h4>
+          <ul>
+            <li><a href="#" data-i18n="footer.contact.address">📍 مديونة، الدار البيضاء</a></li>
+            <li><a href="#" data-i18n="footer.contact.phone">📞 +212 6XX-XXXXXX</a></li>
+            <li><a href="#" data-i18n="footer.contact.email">✉️ hello@experience-bladi.ma</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footer.rights">© 2026 Experience Bladi. جميع الحقوق محفوظة.</p>
+        <p data-i18n="footer.made">صُنع بـ ❤️ في المغرب</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════ SUCCESS MODAL ════════════ -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-content">
+      <div class="success-icon">✓</div>
+      <h3 data-i18n="modal.title">تم الحجز بنجاح! 🎉</h3>
+      <p data-i18n="modal.desc">شكراً لك! سنتواصل معك قريباً لتأكيد تفاصيل تجربتك. استعد لمغامرة لا تُنسى!</p>
+      <button class="btn-primary" onclick="closeModal()" style="margin: 0 auto;">
+        <span data-i18n="modal.btn">حسناً ✓</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ════════════ BACK TO TOP ════════════ -->
+  <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">↑</button>
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+  <!-- Google Translate Element (Hidden) -->
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'ar', 
+        includedLanguages: 'ar,fr,en', 
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
